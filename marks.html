@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Details of Students</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+    <section>
+      <div class="row justify-content-center mt-5">
+        <div class="display-3" id="title"></div>
+          <div class="d-flex">
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#saveMarks">Add Marks</button>
+            <!-- Modal -->
+            <div class="modal fade" id="saveMarks" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Enter Marks</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                      <form id="mark-list">
+                        <div class="form-group">
+                          <label for="subject">Subject:</label>
+                          <input type="text" id="subject" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="first">First Internal Mark:</label>
+                          <input type="text" id="first" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="second">Second internal mark:</label>
+                          <input type="text" id="second" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="ext">External Examinarion Mark:</label>
+                          <input type="text" id="ext" class="form-control">
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="submit"  id="submit" class="btn btn-secondary" data-bs-dismiss="modal">Add Marks</button>
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <table class="table table-striped mt-5">
+            <tbody id= "tableResults">
+            </tbody>
+          </table>
+      </div>
+    </section>
+
+  <script src="marks.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+</html
