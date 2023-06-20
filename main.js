@@ -1,4 +1,4 @@
-
+title();
 document.getElementById('studentInputForm').addEventListener('submit', saveStudent);
 
 var number = 0;
@@ -19,7 +19,7 @@ function saveStudent(e) {
     }
     e.preventDefault();
 
-    if(localStorage.getItem('students') == null) {
+    if(localStorage.getItem('students') === null) {
         var students = [];
         students.push(student);
         localStorage.setItem('students', JSON.stringify(students));
@@ -28,7 +28,9 @@ function saveStudent(e) {
         students.push(student);
         localStorage.setItem('students', JSON.stringify(students));
     }
+
     document.getElementById('studentInputForm').reset();
+    title();
     fetchStudents();
 }
 //list.length+1 = id
@@ -41,18 +43,18 @@ function fetchStudents() {
         var id = students[i].id;
         studentList.innerHTML +=  `
                                     <tr>
-                                    <th>${i+1}</th>
+                                    <th class="text-center">${i+1}</th>
                                     <td>${name}</td>
                                     <td class="text-end"><a href="marks.html"><button class="btn btn-light col-md-2 mb-2"> View Marks</button></a></td>
                                     </tr>
                                   `;
     }
-}
+};
 
 function title() {
-    if (localStorage.getItem('students' === null)){
-        document.getElementById('title').innerHTML="No Studnets Added";
+    if(localStorage.getItem('students') === null){
+        document.getElementById('title').innerHTML="No Students Added";
     }else{
-        document.getElementById('title').innerHTML=" ";
+        document.getElementById('title').innerHTML="Student List";
     }
-}
+};

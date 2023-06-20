@@ -1,5 +1,6 @@
+title();
 document.getElementById('submit').addEventListener('click', saveMarks);
-
+console.log("Reached here");
 function saveMarks(e) {
     var subject = document.getElementById('subject').value;
     var first = document.getElementById('first').value;
@@ -9,7 +10,7 @@ function saveMarks(e) {
     if(!subject || !first || !second || !ext){
        alert('please fill in the form');
        return false; 
-    }
+    };
     var marks = {
         subject: subject,
         firstInt: first,
@@ -18,7 +19,7 @@ function saveMarks(e) {
     };
     
     e.preventDefault();
-    // showMarks();
+   
 
     if(localStorage.getItem('Marks') === null) {
         var mark= [];
@@ -28,50 +29,64 @@ function saveMarks(e) {
         var mark = JSON.parse(localStorage.getItem('Marks'));
         mark.push(marks);
         localStorage.setItem('Marks', JSON.stringify(mark));
-    }
+    };
     
     document.getElementById('mark-list').reset();
     title();
+    console.log("Reached ");
     showMarks();
-}
+};
+
+
+
 //fetch marks
 function showMarks() {
     var mark = JSON.parse(localStorage.getItem('Marks'));
-    var tableResults = document.getElementById('tableResults');
+    var tableResults = document.getElementById('table');
     
-if(localStorage.getItem('Marks') !==null){
-    var tableHeader = document.createElement('thead');
-    tableHeader.innerHTML = `<tr>
+    if(localStorage.getItem('Marks') !== null){
+    table.innerHTML = `
+    
+                                <thead>
+                                <tr>
                                 <th>No</th>
                                 <th>Subject</th>
                                 <th>First Internal</th>
                                 <th>Second Internal</th>
                                 <th>External Mark</th>
                                 <th>Total</th>
-                             </tr>`;
-    tableResults.appendChild(tableHeader);
+                                </tr>
+                             </thead>`;
+    
+
+
     console.log("Reached here");
-    for(var i = 0; i<mark.length; i++) {
+
+    var Total=0;         
+    for(var i = 0; i< mark.length ; i++) {
         var subject = mark[i].subject;
         var first = +mark[i].firstInt;
         var second = +mark[i].secondInt;
         var ext = +mark[i].external;
         var TotalPercentage = (first + second + ext)/100;
         
-        var Total=0;                    
-        Total += TotalPercentage
+                   
+        Total += TotalPercentage;
 
-        var newRow = document.createElement('tr');
-        newRow.innerHTML =
-                           `<td>${i+1}</td>
+        console.log("Reached here");
+       
+        tableResults.innerHTML +=
+                           `
+                           <tr>
+                           <td>${i+1}</td>
                             <td>${subject}</td>
                             <td>${first}</td>
                             <td>${second}</td>
                             <td>${ext}</td>
-                            <td>${first + second + ext}</td>`;
-        tableResults.appendChild(newRow);
+                            <td>${first + second + ext}</td>
+                            </tr>`;
         }
-    }
+    };
         var cgpa = (Total*10) / (i);
         if(localStorage.getItem('Marks') !== null){
             tableResults.innerHTML += `
@@ -84,12 +99,15 @@ if(localStorage.getItem('Marks') !==null){
                                     <td>${cgpa.toFixed(2)}</td>
                                 </tr>
                                 `;
+                                console.log("Reached here");
     }
-}
+};
 function title() {
-    if (localStorage.getItem('Marks' === null)){
+    console.log("Reached here");
+    if (localStorage.getItem("Marks") === null ){    //br error
+       
         document.getElementById('title').innerHTML="No Marks added";
     }else{
         document.getElementById('title').innerHTML=" ";
     }
-}
+};
